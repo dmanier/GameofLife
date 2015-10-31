@@ -1,7 +1,7 @@
-
 public class Cell {
 	private boolean isAlive;
-	private int[][] neighbors;
+	private boolean nextStatus;
+	private String[] neighbors;
 	private int row;
 	private int col;
 	
@@ -9,38 +9,28 @@ public class Cell {
 		this.row = row;
 		this.col = col;
 		
-		this.neighbors = new int[8][2];
+		this.neighbors = new String[8];
 		findNeighbors();
 		
 	}
-	
+
 	public boolean isAlive() {
 		return isAlive;
 	}
 
+	//Changes status of cell
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 	}
 
-	public int getRow() {
-		return row;
-	}
+	public void changeStatus() { this.isAlive = !isAlive; }
 
-	public void setRow(int row) {
-		this.row = row;
-		findNeighbors();
-	}
+	public void next() {this.isAlive = this.nextStatus; }
 
-	public int getCol() {
-		return col;
-	}
+	public void setNextStatus(boolean nextStatus) { this.nextStatus = nextStatus; }
 
-	public void setCol(int col) {
-		this.col = col;
-		findNeighbors();
-	}
 
-	public int[][] getNeighbors() {
+	public String[] getNeighbors() {
 		return neighbors;
 	}
 
@@ -52,7 +42,7 @@ public class Cell {
 	         for (int ncol : nCols) {
 	        	 
 	        	 if (!(nrow == this.row && ncol == this.col)){
-	        	 this.neighbors[count] = new int[] {nrow,ncol};
+	        	 this.neighbors[count] = Integer.toString(nrow) + "_" + Integer.toString(ncol);
 	        	 count++;
 	        	 }
 	         }

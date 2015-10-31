@@ -1,13 +1,12 @@
-
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
-public class MyMouseListener extends MouseAdapter {
+public class GridMouseListener extends MouseAdapter {
    private ColorGrid colorGrid;
 
-   public MyMouseListener(ColorGrid colorGrid) {
+   public GridMouseListener(ColorGrid colorGrid) {
       this.colorGrid = colorGrid;
    }
 
@@ -19,6 +18,7 @@ public class MyMouseListener extends MouseAdapter {
 			  if(label.getBackground() == Color.gray){
 				  label.setBackground(Color.green);
 			  } else label.setBackground(Color.gray);
+             this.colorGrid.changeCell(label.getName());
 		  }
       }
    }
