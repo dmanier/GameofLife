@@ -26,7 +26,6 @@ public class StartSimActionListener implements ActionListener {
 	
     public void stopSimulation() {
         runSim.stopRunning();
-	runSim = null;
     }
 	
     class RunSim implements Runnable {
@@ -38,10 +37,10 @@ public class StartSimActionListener implements ActionListener {
         this.running = true;
         frame.setGridChangeable(false);
         while (running) {
-		    sleep();
 		    frame.calculateGrid();
             frame.updateGenCount();
 		    repaint();
+            sleep();
         }
 	}
 		

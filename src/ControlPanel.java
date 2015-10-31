@@ -33,73 +33,72 @@ public class ControlPanel {
     }
 	
     private void createControls() {
-	StartSimActionListener startListener = 
-            new StartSimActionListener(frame);
-	StopSimActionListener stopListener = 
-            new StopSimActionListener();
-	stopListener.setListener(startListener);
-		
-	panel = new JPanel();
-	panel.setLayout(new GridBagLayout());
-		
-	int gridy = 0;
-		
-	JButton randomButton = new JButton("Random Initialization");
-	randomButton.addActionListener(
-            new RandomInitializationActionListener(frame));
-	addComponent(panel, randomButton, 0, gridy++, 2, 1,
-            buttonInsets, GridBagConstraints.LINE_START,
-            GridBagConstraints.HORIZONTAL);
-		
-	JButton startButton = new JButton("Start Simulation");
-	startButton.addActionListener(startListener);
-	addComponent(panel, startButton, 0, gridy++, 2, 1,
-            buttonInsets, GridBagConstraints.LINE_START,
-            GridBagConstraints.HORIZONTAL);
-		
-	JButton stopButton = new JButton("Stop Simulation");
-	stopButton.addActionListener(stopListener);
-	addComponent(panel, stopButton, 0, gridy++, 2, 1,
-            buttonInsets, GridBagConstraints.LINE_START,
-            GridBagConstraints.HORIZONTAL);
-		
-	JButton clearButton = new JButton("Clear Simulation");
-	clearButton.addActionListener(
-            new ClearSimActionListener(frame));
-	addComponent(panel, clearButton, 0, gridy++, 2, 1,
-            buttonInsets, GridBagConstraints.LINE_START,
-            GridBagConstraints.HORIZONTAL);
-		
-	JLabel sliderLabel = new JLabel("Generation Delay in Seconds", 
-            JLabel.CENTER);
-        sliderLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        addComponent(panel, sliderLabel, 0, gridy++, 2, 1,
-            buttonInsets, GridBagConstraints.LINE_START,
-            GridBagConstraints.HORIZONTAL);
-        
-        int defaultDelay = (int) frame.getGenDelay() / 1000;
-	JSlider genDelaySlider = 
-            new JSlider(JSlider.HORIZONTAL, 2, 10, defaultDelay);
-	genDelaySlider.addChangeListener(
-            new GenDelayChangeListener(frame));
-	genDelaySlider.setMajorTickSpacing(1);
-	genDelaySlider.setPaintLabels(true);
-	genDelaySlider.setPaintTicks(true);
-	addComponent(panel, genDelaySlider, 0, gridy++, 2, 1,
-            buttonInsets, GridBagConstraints.LINE_START,
-            GridBagConstraints.HORIZONTAL);
-		
-	JLabel genLabel = new JLabel("Generation:");
-	addComponent(panel, genLabel, 0, gridy, 1, 1,
-            buttonInsets, GridBagConstraints.LINE_START,
-            GridBagConstraints.HORIZONTAL);
-		
-	genTextField = new JTextField(10);
-	genTextField.setHorizontalAlignment(JTextField.RIGHT);
-	genTextField.setEditable(false);
-	addComponent(panel, genTextField, 1, gridy++, 1, 1,
-            buttonInsets, GridBagConstraints.LINE_START,
-            GridBagConstraints.HORIZONTAL);
+        StartSimActionListener startListener = new StartSimActionListener(frame);
+        StopSimActionListener stopListener = new StopSimActionListener();
+        stopListener.setListener(startListener);
+        ClearSimActionListener clearListener = new ClearSimActionListener(frame);
+        clearListener.setListener(startListener);
+
+        panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+
+        int gridy = 0;
+
+        JButton randomButton = new JButton("Random Initialization");
+        randomButton.addActionListener(
+                new RandomInitializationActionListener(frame));
+        addComponent(panel, randomButton, 0, gridy++, 2, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+
+        JButton startButton = new JButton("Start Simulation");
+        startButton.addActionListener(startListener);
+        addComponent(panel, startButton, 0, gridy++, 2, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+
+        JButton stopButton = new JButton("Stop Simulation");
+        stopButton.addActionListener(stopListener);
+        addComponent(panel, stopButton, 0, gridy++, 2, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+
+        JButton clearButton = new JButton("Clear Simulation");
+        clearButton.addActionListener(clearListener);
+        addComponent(panel, clearButton, 0, gridy++, 2, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+
+        JLabel sliderLabel = new JLabel("Generation Delay in Seconds",
+                JLabel.CENTER);
+            sliderLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            addComponent(panel, sliderLabel, 0, gridy++, 2, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+
+            int defaultDelay = (int) frame.getGenDelay() / 1000;
+        JSlider genDelaySlider =
+                new JSlider(JSlider.HORIZONTAL, 2, 10, defaultDelay);
+        genDelaySlider.addChangeListener(
+                new GenDelayChangeListener(frame));
+        genDelaySlider.setMajorTickSpacing(1);
+        genDelaySlider.setPaintLabels(true);
+        genDelaySlider.setPaintTicks(true);
+        addComponent(panel, genDelaySlider, 0, gridy++, 2, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+
+        JLabel genLabel = new JLabel("Generation:");
+        addComponent(panel, genLabel, 0, gridy, 1, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+
+        genTextField = new JTextField(10);
+        genTextField.setHorizontalAlignment(JTextField.RIGHT);
+        genTextField.setEditable(false);
+        addComponent(panel, genTextField, 1, gridy++, 1, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
     }
 	
     private void addComponent(Container container, Component component,
