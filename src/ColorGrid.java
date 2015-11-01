@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.util.HashMap;
+import java.util.Random;
 
 
 @SuppressWarnings("serial")
@@ -71,7 +72,19 @@ public class ColorGrid extends JPanel {
       cellMap.get(key).changeStatus();
    }
 
-   public void randomGrid(){}
+   public void randomGrid(){
+      int seed = Math.round(this.rows * this.cols / 5 );
+      Random random = new Random();
+      resetGrid();
+      for (int z = 0; z < seed; z++){
+         int row = random.nextInt(rows);
+         int col = random.nextInt(cols);
+         String key = Integer.toString(row) + "_" + Integer.toString(col);
+         myLabels[row][col].setBackground(Color.green);
+         cellMap.get(key).setAlive(true);
+      }
+
+   }
 
    public void calculateGrid(){
       for (Cell cell : cellMap.values()) {

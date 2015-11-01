@@ -38,6 +38,8 @@ public class ControlPanel {
         stopListener.setListener(startListener);
         ClearSimActionListener clearListener = new ClearSimActionListener(frame);
         clearListener.setListener(startListener);
+        RandomInitializationActionListener randomListener = new RandomInitializationActionListener(frame);
+        randomListener.setListener(startListener);
 
         panel = new JPanel();
         panel.setLayout(new GridBagLayout());
@@ -45,8 +47,7 @@ public class ControlPanel {
         int gridy = 0;
 
         JButton randomButton = new JButton("Random Initialization");
-        randomButton.addActionListener(
-                new RandomInitializationActionListener(frame));
+        randomButton.addActionListener(randomListener);
         addComponent(panel, randomButton, 0, gridy++, 2, 1,
                 buttonInsets, GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL);

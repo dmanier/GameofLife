@@ -25,7 +25,7 @@ public class StartSimActionListener implements ActionListener {
     }
 	
     public void stopSimulation() {
-        runSim.stopRunning();
+        if (runSim != null) runSim.stopRunning();
     }
 	
     class RunSim implements Runnable {

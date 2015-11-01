@@ -70,7 +70,7 @@ public class TopFrame {
 	}
 	public long getGenDelay() { return this.genDelay; }
 	public void setGenDelay(long genDelay) {this.genDelay = genDelay; }
-	public void randomGrid() {}
+	public void randomGrid() {gridPanel.randomGrid();}
 	public void clearGrid() {gridPanel.resetGrid();}
 	public void setGridChangeable(boolean isChangeable){gridPanel.setChangeable(isChangeable);}
 }
