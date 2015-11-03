@@ -15,7 +15,7 @@ public class Main implements Runnable {
     // Main method for running program
     public static void main(String[] args) {
         
-        // Add the Nimbus Look and Feel to the GUI
+        // Add the Nimbus look and feel to the GUI
         try {
             UIManager.put("nimbusBase", new Color(115,164,209));
             UIManager.put("nimbusBlueGrey", new Color(61,96,121));
