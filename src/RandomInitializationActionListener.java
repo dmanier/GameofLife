@@ -6,19 +6,18 @@
 // Imports used by Random Listener
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 // Class for Random Initialization Action Listener that implements ActionListener
 public class RandomInitializationActionListener implements ActionListener {
 
     // Variable to use frame from TopFrame class
-    private TopFrame frame;
+    private ControlPanel cp;
     // Variable to use listener from StartSimActionListener class
     private StartSimActionListener listener;
 
     // Constructor for Random Listener that uses frame from TopFrame class
-    public RandomInitializationActionListener(TopFrame frame) {
-	this.frame = frame;
+    public RandomInitializationActionListener(ControlPanel cp) {
+	this.cp = cp;
     }
     
     // Constructor for setListener that uses listener from StartSimActionListener
@@ -32,13 +31,13 @@ public class RandomInitializationActionListener implements ActionListener {
         // Stop the simulation
         listener.stopSimulation();
         // Clear the grid
-        frame.clearGrid();
+        cp.getFrame().clearGrid();
         // Clear the generation count
-        frame.clearGenCount();
+        cp.getFrame().clearGenCount();
         // Make the grid a random initialization
-        frame.randomGrid();
+        cp.getFrame().randomGrid();
         // Makes the grid NOT editable
-        frame.setGridChangeable(false);
+        cp.getFrame().setGridChangeable(false);
 	}
 		
 }

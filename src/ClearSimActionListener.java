@@ -12,14 +12,14 @@ import java.awt.event.ActionListener;
 public class ClearSimActionListener implements ActionListener {
 
     // Variable to make use of the TopFrame class
-    private TopFrame frame;
+    private ControlPanel cp;
     // Variable to use the start listener
     StartSimActionListener listener;
 	
     // Constructor for Clear Sim Action Listener
-    public ClearSimActionListener(TopFrame frame) {
+    public ClearSimActionListener(ControlPanel cp) {
         // Uses the frame from TopFrame
-        this.frame = frame;
+        this.cp = cp;
     }
 
     // Constructor for setListener to make use of listener variable
@@ -32,11 +32,11 @@ public class ClearSimActionListener implements ActionListener {
     // Method for action performed by clear button
     public void actionPerformed(ActionEvent e) {
         // Clear the grid
-        frame.clearGrid();
+        cp.getFrame().clearGrid();
         // Can click on the grid and edit it
-        frame.setGridChangeable(true);
+        cp.getFrame().setGridChangeable(true);
         // Clear the generation count
-        frame.clearGenCount();
+        cp.getFrame().clearGenCount();
         // Can stop the simulation
         listener.stopSimulation();
         

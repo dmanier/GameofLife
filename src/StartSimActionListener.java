@@ -12,14 +12,14 @@ import javax.swing.SwingUtilities;
 public class StartSimActionListener implements ActionListener {
 
     // Variable for frame that uses TopFrame class
-    private TopFrame frame;
+    private ControlPanel cp;
 
     // Variable runSim to run the simulation
     private RunSim runSim;
 	
     // Constructor for Start Listener that uses frame from TopFrame
-    public StartSimActionListener (TopFrame frame) {
-	this.frame = frame;
+    public StartSimActionListener (ControlPanel cp) {
+	this.cp = cp;
     }
 
     @Override
@@ -49,13 +49,13 @@ public class StartSimActionListener implements ActionListener {
             // The thread is running
             this.running = true;
             // Grid is NOT changeable
-            frame.setGridChangeable(false);
+            cp.getFrame().setGridChangeable(false);
             // While thread is running
             while (running) {
                 // Calculate the grid
-                frame.calculateGrid();
+                cp.getFrame().calculateGrid();
                 // Update the generation count
-                frame.updateGenCount();
+                cp.getFrame().updateGenCount();
                 // Reset the grid and sleep
                 repaint();
                 sleep();
@@ -67,7 +67,7 @@ public class StartSimActionListener implements ActionListener {
             SwingUtilities.invokeLater(new Runnable() {
 		@Override
 		public void run() {
-                    frame.setGenTextField();
+                    cp.getFrame().setGenTextField();
 		}
             });
 	}
@@ -75,7 +75,7 @@ public class StartSimActionListener implements ActionListener {
         // Method to put the thread to sleep
 	private void sleep() {
             try {
-		Thread.sleep(frame.getGenDelay());
+		Thread.sleep(cp.getFrame().getGenDelay());
             } catch (InterruptedException e) {
             }
 	}

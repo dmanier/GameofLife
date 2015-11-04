@@ -11,11 +11,11 @@ import javax.swing.event.ChangeListener;
 // Class for Generation Delay Change Listener that implements ChangeListener
 public class GenDelayChangeListener implements ChangeListener {
     // Variable to make use of frame from TopFrame
-    private TopFrame frame;
+    private ControlPanel cp;
 
     // Constructor for Generation Delay Change Listener that uses frame from TopFrame
-    public GenDelayChangeListener(TopFrame frame) {
-        this.frame = frame;
+    public GenDelayChangeListener(ControlPanel cp) {
+        this.cp = cp;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class GenDelayChangeListener implements ChangeListener {
 	JSlider source = (JSlider) e.getSource();
         // If the slider is moved it gets the source and does calculation
 	if (!source.getValueIsAdjusting()) {
-            frame.setGenDelay(1000L * source.getValue());
+            cp.getFrame().setGenDelay(1000L * source.getValue());
 	}
         
     }

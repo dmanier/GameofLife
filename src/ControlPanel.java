@@ -45,12 +45,12 @@ public class ControlPanel {
         /** These add the Start, Stop, Clear, and Random Actions to the buttons
          *  from the ActionListener classes they are associated with.
          */
-        StartSimActionListener startListener = new StartSimActionListener(frame);
+        StartSimActionListener startListener = new StartSimActionListener(this);
         StopSimActionListener stopListener = new StopSimActionListener();
         stopListener.setListener(startListener);
-        ClearSimActionListener clearListener = new ClearSimActionListener(frame);
+        ClearSimActionListener clearListener = new ClearSimActionListener(this);
         clearListener.setListener(startListener);
-        RandomInitializationActionListener randomListener = new RandomInitializationActionListener(frame);
+        RandomInitializationActionListener randomListener = new RandomInitializationActionListener(this);
         randomListener.setListener(startListener);
 
         // Create a new panel for the layout
@@ -123,7 +123,7 @@ public class ControlPanel {
         JSlider genDelaySlider =
                 new JSlider(JSlider.HORIZONTAL, 2, 10, defaultDelay);
         genDelaySlider.addChangeListener(
-                new GenDelayChangeListener(frame));
+                new GenDelayChangeListener(this));
         genDelaySlider.setMajorTickSpacing(1);
         genDelaySlider.setPaintLabels(true);
         genDelaySlider.setPaintTicks(true);
@@ -164,6 +164,8 @@ public class ControlPanel {
             // Adds the components and constraints to the panel
             container.add(component, gbc);
     }
+
+    public TopFrame getFrame(){return this.frame;}
 	
     // Method for setting the generation text field
     public void setGenTextField(long genCount) {
