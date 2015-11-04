@@ -2,12 +2,106 @@
 <Diagram>
   <ID>JAVA</ID>
   <OriginalElement />
-  <nodes />
+  <nodes>
+    <node x="610.2121152196503" y="11.0">Cell</node>
+    <node x="1111.4949648181052" y="1760.6349710302352">GenDelayChangeListener</node>
+    <node x="159.50251294589805" y="1588.1631335719173">StopSimActionListener</node>
+    <node x="872.7083459148865" y="322.9876361028571">ColorGrid</node>
+    <node x="281.3484204639078" y="2170.95355901951">StartSimActionListener</node>
+    <node x="1303.459066541017" y="120.61076282599379">GridMouseListener</node>
+    <node x="0.0" y="1937.950769975644">RandomInitializationActionListener</node>
+    <node x="804.494451020256" y="935.3161690841409">TopFrame</node>
+    <node x="1497.5891739416911" y="1111.3032513264443">Main</node>
+    <node x="589.8924329129346" y="2070.614218410427">ClearSimActionListener</node>
+    <node x="568.5878479778244" y="1658.7959580345464">ControlPanel</node>
+  </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
+  <edges>
+    <edge source="ColorGrid" target="Cell">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="TopFrame" target="ColorGrid">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ControlPanel" target="TopFrame">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ControlPanel" target="GenDelayChangeListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GenDelayChangeListener" target="ControlPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="RandomInitializationActionListener" target="ControlPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ControlPanel" target="StopSimActionListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="TopFrame" target="ControlPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="StartSimActionListener" target="ControlPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ColorGrid" target="GridMouseListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="StopSimActionListener" target="StartSimActionListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ControlPanel" target="StartSimActionListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Main" target="TopFrame">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ControlPanel" target="RandomInitializationActionListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ClearSimActionListener" target="ControlPanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="GridMouseListener" target="ColorGrid">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ClearSimActionListener" target="StartSimActionListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ControlPanel" target="ClearSimActionListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="RandomInitializationActionListener" target="StartSimActionListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7533564313555651" x="1144.2684679505608" y="926.2624317332568" />
   <SelectedNodes />
-  <Categories />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
 </Diagram>
 
