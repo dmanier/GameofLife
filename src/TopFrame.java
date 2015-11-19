@@ -120,5 +120,7 @@ public class TopFrame {
 	public void clearGrid() {
 		gridPanel.resetGrid();
 	}
+	
+	public void shapeBox() {};
 
 }
