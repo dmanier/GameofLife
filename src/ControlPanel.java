@@ -32,6 +32,9 @@ public class ControlPanel {
 	
     // Variable to create a Text Field for the generation count
     private JTextField genTextField;
+    
+    // String to hold some known shapes
+    private String[] shapesString = { "Block", "Beehive", "Boat", "Blinker", "Toad", "Glider" };
 
     // Constructor for the ControlPanel, with a frame and the controls
     public ControlPanel(TopFrame frame) {
@@ -149,6 +152,23 @@ public class ControlPanel {
         genTextField.setHorizontalAlignment(JTextField.RIGHT);
         genTextField.setEditable(false);
         addComponent(panel, genTextField, 1, gridy++, 1, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+                
+        /** Creates a label called shapeLabel that says "Shape Options:".
+         *  It then adds the label to the panel and sets it after the generation
+         *  text field.
+         */
+        JLabel shapeLabel = new JLabel("Shape Options:");
+        addComponent(panel, shapeLabel, 0, gridy, 1, 1,
+                buttonInsets, GridBagConstraints.LINE_START,
+                GridBagConstraints.HORIZONTAL);
+        
+        /** Creates a JComboBox called shapeList to show known shapes.
+         *  It is then added to the panel to the right of the shapeLabel.
+         */
+        JComboBox shapeList = new JComboBox(shapesString);
+        addComponent(panel, shapeList, 1, gridy++, 1, 1,
                 buttonInsets, GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL);
     }
