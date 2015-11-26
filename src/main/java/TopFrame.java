@@ -162,6 +162,6 @@ public class TopFrame {
 		gridPanel.resetGrid();
 	}
 	
-	public void definedGrid(JSONArray grids) { gridPanel.definedGrid(grids); }
+	public void definedGrid(String name) {  }
 
 }
