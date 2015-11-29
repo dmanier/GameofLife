@@ -1,0 +1,26 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+
+public class ShapesListener implements ActionListener {
+    
+    private ControlPanel cp;
+    
+    private StartSimActionListener listener;
+    
+    public ShapesListener(ControlPanel cp) {
+        this.cp = cp;
+    }
+    
+    public void setListener(StartSimActionListener listener) {
+        this.listener = listener;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JComboBox cb = (JComboBox)e.getSource();
+        String patternName = (String)cb.getSelectedItem();
+        cp.getFrame().definedGrid(patternName);
+    }
+ 
+}
