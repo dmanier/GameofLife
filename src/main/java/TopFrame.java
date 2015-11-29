@@ -30,7 +30,7 @@ public class TopFrame {
 	public TopFrame() {
 		this.patterns = getPatterns();
 		createControls();
-		definedGrid("Glider");
+		definedGrid("Pentadecathlon");
 
 	}
 
