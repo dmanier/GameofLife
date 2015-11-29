@@ -18,16 +18,28 @@ public class ShapesListener implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Stop the simulation
-        listener.stopSimulation();
-        // Clear the grid
-        cp.getFrame().clearGrid();
-        // Clear the generation count
-        cp.getFrame().clearGenCount();
-        //Gets comboBox selection and passes it to topFrame definedGrid
+        //Gets comboBox selection
         JComboBox cb = (JComboBox)e.getSource();
         String patternName = (String)cb.getSelectedItem();
-        cp.getFrame().definedGrid(patternName);
+        if (!patternName.equals("None")) {
+            // Stop the simulation
+            listener.stopSimulation();
+            // Clear the grid
+            cp.getFrame().clearGrid();
+            // Clear the generation count
+            cp.getFrame().clearGenCount();
+            //passes name to topFrame definedGrid
+            cp.getFrame().definedGrid(patternName);
+        }else{
+            // Clear the grid
+            cp.getFrame().clearGrid();
+            // Can click on the grid and edit it
+            cp.getFrame().setGridChangeable(true);
+            // Clear the generation count
+            cp.getFrame().clearGenCount();
+            // Can stop the simulation
+            listener.stopSimulation();
+        }
 
     }
  
