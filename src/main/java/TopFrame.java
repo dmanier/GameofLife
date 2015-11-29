@@ -30,8 +30,7 @@ public class TopFrame {
 	public TopFrame() {
 		this.patterns = getPatterns();
 		createControls();
-		System.out.println(patterns.toJSONString());
-
+		definedGrid("Glider");
 
 	}
 
@@ -162,6 +161,20 @@ public class TopFrame {
 		gridPanel.resetGrid();
 	}
 	
-	public void definedGrid(String name) {  }
+	public void definedGrid(String patternName) {
+		Iterator<JSONObject> iterator = this.patterns.iterator();
+		JSONArray grids = new JSONArray();
+		while (iterator.hasNext()) {
+			JSONObject nextItem = iterator.next();
+			System.out.println(nextItem);
+			String nextName = nextItem.get("Name").toString();
+			System.out.println(nextName);
+			if (nextName.toString().equals(patternName)) {
+				grids = (JSONArray) nextItem.get("Grids");
+				break;
+			}
+		}
+		gridPanel.definedGrid(grids);
+	}
 
 }

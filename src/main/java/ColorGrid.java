@@ -1,9 +1,11 @@
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
 
 
@@ -121,8 +123,19 @@ public class ColorGrid extends JPanel {
 
    }
 
-   public void definedGrid(JSONArray grids){
+   public void definedGrid(JSONArray grids) {
 
+      Iterator<JSONObject> iterator = grids.iterator();
+      while (iterator.hasNext()) {
+         JSONObject nextGrid = iterator.next();
+         System.out.println(nextGrid);
+         Integer row = Integer.parseInt(nextGrid.get("row").toString()) - 1;
+         int col = Integer.parseInt(nextGrid.get("col").toString()) - 1;
+         String key = Integer.toString(row) + "_" + Integer.toString(col);
+         myLabels[row][col].setBackground(Color.green);
+         cellMap.get(key).setAlive(true);
+
+      }
    }
 
    //calculates the next status for all cells based on how many neighbors
