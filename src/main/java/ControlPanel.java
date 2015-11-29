@@ -48,6 +48,8 @@ public class ControlPanel {
         clearListener.setListener(startListener);
         RandomInitializationActionListener randomListener = new RandomInitializationActionListener(this);
         randomListener.setListener(startListener);
+        ShapesListener shapesListener = new ShapesListener(this);
+        shapesListener.setListener(startListener);
 
         // Create a new panel for the layout
         panel = new JPanel();
@@ -161,6 +163,7 @@ public class ControlPanel {
          *  It is then added to the panel to the right of the shapeLabel.
          */
         JComboBox shapeList = new JComboBox(shapesString);
+        shapeList.addActionListener(shapesListener);
         addComponent(panel, shapeList, 1, gridy++, 1, 1,
                 buttonInsets, GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL);
