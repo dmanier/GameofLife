@@ -122,13 +122,17 @@ public class ColorGrid extends JPanel {
       }
 
    }
-
+   /*
+    Sets cells identified by the grids extracted from the JSON to alive.
+    The JSON grids are 1-based so they are more human readable so the
+    actual grid index will be 1 less than annotated in the JSON since
+    it is zero-indexed.
+     */
    public void definedGrid(JSONArray grids) {
 
       Iterator<JSONObject> iterator = grids.iterator();
       while (iterator.hasNext()) {
          JSONObject nextGrid = iterator.next();
-         System.out.println(nextGrid);
          Integer row = Integer.parseInt(nextGrid.get("row").toString()) - 1;
          int col = Integer.parseInt(nextGrid.get("col").toString()) - 1;
          String key = Integer.toString(row) + "_" + Integer.toString(col);

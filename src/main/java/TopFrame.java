@@ -30,6 +30,8 @@ public class TopFrame {
 	public TopFrame() {
 		this.patterns = getPatterns();
 		createControls();
+
+		//Hardcoded call to definedGrid for testing purposes.  Should be removed once combobox listener is available.
 		definedGrid("Pentadecathlon");
 
 	}
@@ -80,10 +82,17 @@ public class TopFrame {
 		System.exit(0);
 	}
 
+	/*
+	Parses expected JSON format of patterns to be created in the grid.  Stored in TopFrame which will pass
+	the required parts to the ControlPanel and Colorgrid (controlPanel:Names, colorGrid:grids)
+	 */
 	public JSONArray getPatterns(){
 		JSONParser parser = new JSONParser();
+		//Creates an empty JSON string with the expected keys
 		String emptyJson = "{\"Type\":\"Empty\",\"Name\":\"None\",\"Grids\":[]}";
 		JSONArray jsonArray = new JSONArray();
+
+		//Reads the JSON file and adds the emptyJson as the first item
 		try {
 			Object obj = parser.parse(new FileReader(getClass().getResource("patterns.json").getFile()));
 			jsonArray = (JSONArray) obj;
@@ -93,13 +102,12 @@ public class TopFrame {
 
 		}
 		Iterator<JSONObject> iterator = jsonArray.iterator();
+
+		//Creates defaultOptions list to be used by comboBox in the ControlPanel
 		while(iterator.hasNext()){
 			JSONObject nextItem = iterator.next();
-			System.out.println(nextItem);
 			String nextOption = nextItem.get("Name").toString();
-			System.out.println(nextOption);
 			this.defaultOptions.add(nextOption);
-			System.out.println("Added next item.");
 
 		}
 		return jsonArray;
@@ -160,10 +168,19 @@ public class TopFrame {
 	public void clearGrid() {
 		gridPanel.resetGrid();
 	}
-	
+
+	/*
+	Retrieves the grids for the matching pattern name and passes it to the ColorGrid
+	to be processed and presented.
+	 */
 	public void definedGrid(String patternName) {
 		Iterator<JSONObject> iterator = this.patterns.iterator();
 		JSONArray grids = new JSONArray();
+
+		/*
+		Itereates through each pattern and checks if the name is equal to patternName
+		If it is then retrieves grids
+		 */
 		while (iterator.hasNext()) {
 			JSONObject nextItem = iterator.next();
 			System.out.println(nextItem);
