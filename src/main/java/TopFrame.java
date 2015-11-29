@@ -12,6 +12,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -30,10 +31,6 @@ public class TopFrame {
 	public TopFrame() {
 		this.patterns = getPatterns();
 		createControls();
-
-		//Hardcoded call to definedGrid for testing purposes.  Should be removed once combobox listener is available.
-		definedGrid("Pentadecathlon");
-
 	}
 
 
@@ -94,7 +91,7 @@ public class TopFrame {
 
 		//Reads the JSON file and adds the emptyJson as the first item
 		try {
-			Object obj = parser.parse(new FileReader(getClass().getResource("patterns.json").getFile()));
+			Object obj = parser.parse(new InputStreamReader(getClass().getResourceAsStream("patterns.json"),"UTF-8"));
 			jsonArray = (JSONArray) obj;
 			jsonArray.add(0,parser.parse(emptyJson));
 		}catch(Exception e1){
@@ -183,15 +180,14 @@ public class TopFrame {
 		 */
 		while (iterator.hasNext()) {
 			JSONObject nextItem = iterator.next();
-			System.out.println(nextItem);
 			String nextName = nextItem.get("Name").toString();
-			System.out.println(nextName);
 			if (nextName.toString().equals(patternName)) {
 				grids = (JSONArray) nextItem.get("Grids");
 				break;
 			}
 		}
 		gridPanel.definedGrid(grids);
+		setGridChangeable(false);
 	}
 
 }
